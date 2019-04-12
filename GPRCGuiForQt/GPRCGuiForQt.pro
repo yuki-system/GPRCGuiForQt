@@ -28,12 +28,16 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     CentralWidget/centralview.cpp \
-    CentralWidget/GPRCButton/gprcbutton.cpp
+    CentralWidget/GPRCButton/gprcbutton.cpp \
+    MenuBar/menubar.cpp \
+    mainwindowmodel.cpp
 
 HEADERS += \
         mainwindow.h \
     CentralWidget/centralview.h \
-    CentralWidget/GPRCButton/gprcbutton.h
+    CentralWidget/GPRCButton/gprcbutton.h \
+    MenuBar/menubar.h \
+    mainwindowmodel.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

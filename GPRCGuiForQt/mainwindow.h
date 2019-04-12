@@ -3,19 +3,23 @@
 
 #include <QMainWindow>
 
-QT_BEGIN_NAMESPACE
+
 class CentralView;
-QT_END_NAMESPACE
+class MenuBar;
+class MainWindowModel;
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    MainWindowModel *model = nullptr;
 
+    MenuBar *menuBar = nullptr;
     CentralView *center = nullptr;
+
 private:
 
 };
