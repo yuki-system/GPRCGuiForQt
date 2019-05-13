@@ -7,6 +7,7 @@
 class QMenu;
 class QAction;
 class MainWindowModel;
+class ConnectView;
 
 
 /**
@@ -24,11 +25,17 @@ private:
 signals:
 
 public slots:
+    void slotOpenConnectView(bool); /// 接続画面の表示
 public:
-    QMenu *menuFile = nullptr;
-    QAction *actionConnect = nullptr;
-    QAction *actionExit = nullptr;
+    QMenu *menuFile = nullptr;      /// ファイルメニュー
+    QAction *actionConnect = nullptr;   /// 接続
+    QAction *actionExit = nullptr;  /// 終了
 
+
+
+    /**
+     * @todo ふさわしいモデルの立て方を考える
+     */
     MainWindowModel *model = nullptr;
 };
 
