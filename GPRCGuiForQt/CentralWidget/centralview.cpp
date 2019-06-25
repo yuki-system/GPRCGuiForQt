@@ -28,7 +28,7 @@ namespace CB{
         {Plus, "plus", "+", "plus"},
         {Minus, "minus", "-", "minus"},
         {Multiply, "multi", "*", "multiply"},
-        {Divide, "divede", "/", "divide"},
+        {Divide, "divide", "/", "divide"},
         {BackSpace, "bs", "BS", "backspace"},
         {Red, "R", "", "red"},
         {Green, "G", "", "green"},
@@ -38,7 +38,8 @@ namespace CB{
 }
 
 
-CentralView::CentralView(QWidget *parent) : QWidget(parent),
+CentralView::CentralView(CommandModel *argCommod, QWidget *parent) : QWidget(parent),
+    commod(argCommod),
     layout(new QGridLayout(this)),
     teViewer(new QTextEdit(this)),
     leInput(new QLineEdit(this)),
@@ -50,7 +51,7 @@ CentralView::CentralView(QWidget *parent) : QWidget(parent),
 
     // ボタン初期化
     for (auto itr = button.begin(); itr != button.end(); itr++) {
-        *itr = new GPRCButton(this);
+        *itr = new GPRCButton(commod, this);
     }
     // ボタン文字入力
     using namespace CB;

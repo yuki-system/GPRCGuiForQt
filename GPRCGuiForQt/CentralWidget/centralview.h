@@ -8,6 +8,8 @@ class QTextEdit;
 class QLineEdit;
 class QPushButton;
 class GPRCButton;
+#include "commandmodel.h"
+class CommandModel;
 
 
 /**
@@ -61,13 +63,14 @@ class CentralView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CentralView(QWidget *parent = nullptr);
+    explicit CentralView(CommandModel *argCommod, QWidget *parent = nullptr);
 
 
 signals:
 
 public slots:
 private:
+    CommandModel *commod = nullptr;
     QGridLayout *layout = nullptr;  /// 全体レイアウト
 public:
     QTextEdit *teViewer = nullptr;  /// 文字表示器

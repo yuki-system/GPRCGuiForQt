@@ -26,6 +26,7 @@ signals:
 
 public slots:
     void slotOpenConnectView(bool); /// 接続画面の表示
+    void slotDisconnect(void);  /// 接続切断の通知
 public:
     QMenu *menuFile = nullptr;      /// ファイルメニュー
     QAction *actionConnect = nullptr;   /// 接続

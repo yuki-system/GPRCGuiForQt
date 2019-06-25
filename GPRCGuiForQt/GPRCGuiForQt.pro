@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,6 +26,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    CentralWidget/commandmodel.cpp \
+    ConnectWidget/connectionmodel.cpp \
         main.cpp \
         mainwindow.cpp \
     CentralWidget/centralview.cpp \
@@ -34,6 +37,8 @@ SOURCES += \
     ConnectWidget/connectview.cpp
 
 HEADERS += \
+    CentralWidget/commandmodel.h \
+    ConnectWidget/connectionmodel.h \
         mainwindow.h \
     CentralWidget/centralview.h \
     CentralWidget/GPRCButton/gprcbutton.h \

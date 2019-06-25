@@ -23,10 +23,24 @@ MenuBar::MenuBar(MainWindowModel *argModel, QWidget *parent) :
             model, &MainWindowModel::slotExit);
     connect(actionConnect, &QAction::triggered,
             this, &MenuBar::slotOpenConnectView);
+
+    // 切断検出
+    connect(model->getConnectionModel(),
+            &ConnectionModel::signalDisconnected,
+            this,
+            &MenuBar::slotDisconnect);
 }
 
 void MenuBar::slotOpenConnectView(bool)
 {
-    ConnectView conView;
+    ConnectView conView(model->getConnectionModel());
     conView.exec();
+}
+
+#include <QMessageBox>
+void MenuBar::slotDisconnect(void)
+{
+    QMessageBox mesBox;
+    mesBox.setText(QObject::tr("接続が切断されました。"));
+    mesBox.exec();
 }

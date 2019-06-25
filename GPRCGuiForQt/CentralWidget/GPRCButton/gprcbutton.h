@@ -5,6 +5,7 @@
 
 class QPushButton;
 class QVBoxLayout;
+class CommandModel;
 
 /**
  * @class GPRCButton
@@ -14,8 +15,8 @@ class GPRCButton : public QGroupBox
 {
     Q_OBJECT
 public:
-    explicit GPRCButton(QWidget *parent = nullptr);
-    GPRCButton(const QString &title, QWidget *parent = nullptr);
+    explicit GPRCButton(CommandModel *argCommod, QWidget *parent = nullptr);
+    GPRCButton(const QString &title, CommandModel *argCommod, QWidget *parent = nullptr);
 
     /**
      * @brief ボタン表示文字の変更
@@ -44,8 +45,15 @@ public:
 signals:
 
 public slots:
-
+    /**
+     * @brief ボタンが押された時の挙動
+     * @details
+     * ボタンクリックSIGNALを、commandmodelへの命令発行に変換する
+     * ボタン識別子として、GroupBoxのtitleをそのまま使う
+     */
+    void slotPushButtonSelf(void);
 private:
+    CommandModel *commod = nullptr;
     QVBoxLayout *layout = nullptr;
     QPushButton *button = nullptr;
 

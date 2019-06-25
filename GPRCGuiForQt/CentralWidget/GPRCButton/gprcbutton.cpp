@@ -1,14 +1,17 @@
 #include "gprcbutton.h"
 #include <QPushButton>
 #include <QVBoxLayout>
+#include "../commandmodel.h"
 
-GPRCButton::GPRCButton(QWidget *parent)
-    : GPRCButton("", parent)
+
+GPRCButton::GPRCButton(CommandModel *argCommod, QWidget *parent)
+    : GPRCButton("", argCommod, parent)
 {
 }
 
-GPRCButton::GPRCButton(const QString &title, QWidget *parent)
+GPRCButton::GPRCButton(const QString &title, CommandModel *argCommod, QWidget *parent)
     : QGroupBox(title, parent),
+      commod(argCommod),
       layout(new QVBoxLayout(this)),
       button(new QPushButton(title, this))
 {
@@ -17,6 +20,8 @@ GPRCButton::GPRCButton(const QString &title, QWidget *parent)
 
     button->setMinimumSize(40, 40);
     button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    connect(button, &QPushButton::clicked,
+            this, &GPRCButton::slotPushButtonSelf);
 }
 
 void GPRCButton::setButtonText(const QString &text)
@@ -34,5 +39,10 @@ void GPRCButton::setInitializeText(const QString &boxText, const QString &button
     this->setTitle(boxText);
     button->setText(buttonText);
     button->setToolTip(tooltipText);
+}
+
+void GPRCButton::slotPushButtonSelf(void)
+{
+    commod->pushButton(this->title());
 }
 
